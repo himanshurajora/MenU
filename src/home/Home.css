@@ -167,3 +167,48 @@
     right: 8vw;
   }
 }
+
+
+#nameinput{
+  z-index: 5;
+  margin: 10px 5px;
+  width: 70%;
+  font-size: x-large;
+  border: none;
+  border-radius: 7px;
+  background-color: rgba(255, 255, 255, 0.319);
+  color: white;
+  padding: 7px;
+}
+
+::placeholder{
+  color: white;
+}
+
+#nameinput :active{
+  border: none;
+  outline: none;
+} 
+
+#savebtn{
+  margin: 10px 5px;
+  padding: 7px;
+  font-size: x-large;
+  background-color: rgba(47, 255, 64, 0.523);
+  border: none;
+  color: white;
+  border-radius: 7px;
+  transition: 0.5s;
+}
+
+#savebtn:hover{
+  background-color: rgba(0, 218, 18, 0.523);
+}
+
+#savebtn:active{
+  background-color: rgba(0, 157, 13, 0.523);
+}
+
+.form{
+  z-index: 4;
+}
