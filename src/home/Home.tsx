@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Tilt from 'react-parallax-tilt'
 import './Home.css'
 import {Link} from 'react-router-dom'
@@ -8,8 +8,15 @@ import 'react-notifications-component/dist/theme.css'
 
 function Home() {
 
-  const [name, setname] = useState(`Anonymous_${nanoid(2)}`);
+  const [name, setname] = useState('');
   const [message, setmessage] = useState();
+
+  useEffect(()=>{
+    if(!localStorage.getItem('username')){
+      localStorage.setItem("username", `Anonymous_${nanoid(2)}`)
+    }
+    setname(localStorage.getItem('username'))
+  }, [])
 
   const storeName = (e : any) => {
     e.preventDefault()
