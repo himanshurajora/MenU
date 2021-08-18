@@ -6,7 +6,7 @@
 .Main{
     height: 100vh;
     width: 101vw;
-    background: linear-gradient(45deg, rgb(0, 136, 233), rgb(247, 9, 108));
+    background: linear-gradient(-45deg, rgb(0, 136, 255), rgb(228, 79, 221));
 }
 
 .container{
@@ -41,6 +41,38 @@
 }
 
 .right .top button{
+
+}
+
+.right  .top :first-child{
+    margin-right: 5px;
+}
+
+.right .top .chat{
+   flex: 1;
+}
+
+.right .top .chat .chatbtn{
+    width: 100%;
+    height: 100%;
+    font-size: larger;
+    font-weight: bolder;
+    border: none;
+    background: rgba(255, 255, 255, 0.66);
+    border-radius: 7px;
+    margin: 5px;
+    backdrop-filter: blur(10px);
+    color: rgb(76, 76, 76);
+    transition: 1s;
+ }
+
+ .right .top .people{
+    flex: 1;
+}
+
+.right .top .people .peoplebtn{
+    height: 100%;
+    width: 100%;
     font-size: larger;
     font-weight: bolder;
     border: none;
@@ -52,38 +84,26 @@
     transition: 1s;
 }
 
-.right .top button:hover{
-    background-color: rgba(255, 255, 255, 0.313);
-}
-
-.right  .top :first-child{
-    margin-right: 5px;
-}
-
-.right .top .chat{
-   flex: 1;
-}
-
-.right .top .chat #chat{
+.is-active{
     width: 100%;
     height: 100%;
- }
-
- .right .top .people{
-    flex: 1;
+    font-size: larger;
+    font-weight: bolder;
+    border: none;
+    background: rgba(39, 172, 255, 0.66);
+    border-radius: 7px;
+    margin: 5px;
+    backdrop-filter: blur(10px);
+    color: rgb(230, 230, 230);
+    transition: 1s;
 }
-
-.right .top .people #people{
-    height: 100%;
-    width: 100%;
-}
-
 .right .bottom{
     width: 100%;
     flex: 9;
 }
 
 .bottom{
+    position: relative;
     background-color: rgba(255, 255, 255, 0.306);
     margin: 10px 2px;
     border-radius: 10px;
@@ -110,10 +130,51 @@
     font-weight: bolder;
 }
 
+.messageform{
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#messagetext{
+    padding: 7px;
+    border-radius: 5px;
+    font-size: large;
+    background-color: rgba(255, 255, 255, 0.313);
+    color: white;
+    border: none;
+    margin-left: 10px;
+}
+
+#messagebtn{
+     background-color: rgb(47, 255, 113);
+     padding: 7px;
+     border: none;
+     border-radius: 3px;
+     font-size: large;
+     margin-left: 5px;
+     color: white;
+}
+
+#messagebtn:hover{
+    background-color: rgb(5, 187, 5);
+}
+
 #me{
 
 }
 
 #you{
     
+}
+
+
+@media (max-width:1030px) {
+    .container{
+        flex-direction: column;
+    }
 }
