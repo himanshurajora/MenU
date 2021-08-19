@@ -17,6 +17,7 @@ function Main() {
         }));
 
     const [socket, setsocket] = useState(io("http://localhost:5000"))
+    const [users, setusers] = useState([]);
 
     const peopleSec = useRef<HTMLDivElement>(null)
     const chatSec = useRef<HTMLDivElement>(null)
@@ -39,12 +40,15 @@ function Main() {
         chatBtn.current.className = "is-active"
     }
 
-    const addPerson = (username: string) => {
+    const addPerson = (username: string, userid: string) => {
         var person = document.createElement("div")
         person.className = "person"
         person.innerText = username
         peopleSec.current.appendChild(person)
-
+ 
+        console.log({id: userid, node: person})
+     
+        console.log(users)
         var message = document.createElement("div")
         message.className = "person"
         message.innerText = username + " joined the room"
@@ -73,27 +77,29 @@ function Main() {
         setmessage("")
     }
 
+    // const runAudioStream = (stream) => {
+    //     var audio = document.createElement("audio")
+    //     audio.srcObject = stream
+    //     audio.controls = true
+    //     audio.autoplay = true
+    //     peopleSec.current.appendChild(audio)
+    // }
+
     useEffect(() => {
-        peopleSec.current.style.display = "block"
+        peopleSec.current.style.display = "none"
         peopleBtn.current.className = "is-active"
-        chatSec.current.style.display = "none"
+        chatSec.current.style.display = "block"
 
         mypeer.on('open', (id) => {
             socket.emit("joined", roomId, id, username)
         })
 
         socket.on("user-connected", (userid, username) => {
-            addPerson(username)
-            
-            navigator.mediaDevices.getUserMedia({"video": false, "audio": true}).then(stream=>{
-                
-            })
-
+            addPerson(username, userid)
         })
 
         socket.on("message", (username, message) => {
             console.log("message came");
-
             addMessage(username, message)
         })
 
@@ -139,7 +145,7 @@ function Main() {
                 </div>
                 <div className="right">
                     <div className="top">
-                        <div className="people">
+                        <div className="people" hidden={true}>
                             <button className="peoplebtn" ref={peopleBtn} onClick={showPeople}>People</button>
                         </div>
                         <div className="chat">
